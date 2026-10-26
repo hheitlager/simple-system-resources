@@ -10,6 +10,7 @@
 // @compilerOptions -ladvapi32 -DWIN32_LEAN_AND_MEAN -lole32 -loleaut32 -lruntimeobject -ldxgi -lpdh -liphlpapi -lws2_32 -lcomctl32
 // @license MIT
 // ==/WindhawkMod==
+
 // Taskbar host access and layout lease adapted from Mawaqit Prayer Clock.
 // Copyright (c) 2026 HHeitlager. MIT License.
 // https://github.com/hheitlager/windhawk-mawaqit
@@ -39,11 +40,12 @@ without opening Task Manager first.
 
 ## Getting Started
 **1. Choose your resources**
-In **Resources**, enable the readings you want. Network adds both Upload and
+In **General**, enable the readings you want. Network adds both Upload and
 Download pills.
 
 **2. Set up your taskbar**
-Choose a taskbar position and layout, then pick a theme under **Style**.
+Choose a taskbar position, pill layout and theme under **General** and
+**Taskbar pill**.
 
 **3. Open a resource**
 Click a pill to see its graph and details. Upload and Download share one Network
@@ -78,140 +80,28 @@ by Microsoft or PowerToys.
 // ==/WindhawkModReadme==
 // ==WindhawkModSettings==
 /*
-- Resources:
-  - showCpu: true
-    $name: Show CPU usage
-  - showRam: true
-    $name: Show RAM usage
-  - showGpu: true
-    $name: Show GPU usage
-  - showNetwork: false
-    $name: Show Network speed
-    $description: Shows both Upload and Download.
-  - networkSpeedUnits: bits
-    $name: Network speed units
-    $options:
-    - bits: Bits/s (Kbps, Mbps)
-    - bytes: Bytes/s (KB/s, MB/s)
-  $name: Resources
-- Content:
-  - resourceIdentifier: icon
-    $name: Resource identifier
-    $options:
-    - icon: Icon
-    - name: Name
-    - none: None
-  - showResourceNames: false
-    $name: Show resource names
-    $description: Adds a second row, except in Name identifier mode. The saved preference is preserved.
-  - graphStyle: none
-    $name: Graph style
-    $options:
-    - none: None
-    - boxed: Boxed
-    - background: Background
-  $name: Content
-- Flyout:
-  - openOnHover: false
-    $name: Open on hover
-    $description: Resource flyouts, including the shared Network flyout. Click always opens them. The flyout stays open while you move into it; click outside or press Escape to close.
-  - hoverDelay: 500
-    $name: Hover opening delay (ms)
-    $description: Keep the pointer over a pill for this long before opening (100–3000 ms). Passing over it cancels the wait. Click opens immediately.
-  - hoverCloseDelay: 300
-    $name: Hover closing delay (ms)
-    $description: Time to cross the gap or return after leaving a hover-opened flyout (100–3000 ms). Click-opened flyouts keep normal dismissal behavior.
-  - gap: 15
-    $name: Gap from taskbar
-    $description: Additional native flyout spacing in logical pixels (0–40). Default matches Mawaqit's floating popup spacing.
-  - screenEdgeMargin: 10
-    $name: Screen edge margin
-    $description: Minimum outer spacing from the monitor work-area edges in logical pixels (0–100), scaled for DPI. The taskbar-facing edge uses Gap from taskbar instead.
-  - animations: true
-    $name: Flyout animations
-    $description: Uses Windows native opening and closing animations.
-  - width: 575
-    $name: Width
-    $description: Logical pixels (320–1000), limited to the monitor work area.
-  - height: 400
-    $name: Height
-    $description: Preferred minimum in logical pixels (240–900). Grows to fit content and the selected process count, limited to the monitor work area. No scrollbar.
-  - graphHeight: 100
-    $name: Graph height
-    $description: Logical pixels (80–400). Shared graph height for CPU, Memory and GPU flyouts.
-  - topCount: 3
-    $name: Number of top processes
-    $description: 1–10 processes ranked by CPU usage, private working set or GPU usage, depending on the flyout. Protected or inaccessible processes are skipped.
-  $name: Flyout
-- Layout:
-  - Monitors:
-    - showPrimary: true
-      $name: Show on primary taskbar
-    - showSecondary: true
-      $name: Show on secondary taskbars
-      $description: Also choose a secondary position other than Hidden. Turning this off preserves your selected position.
-    $name: Monitors
-  - mainPosition: before-tray
-    $name: Main taskbar position
-    $options:
-    - before-tray: Before system tray
-    - before-clock: Before clock (inside system tray)
-    - after-clock: After clock (inside system tray)
-    - before-start: Before Windows Start
-    - before-icons: Before taskbar icons
-    - after-icons: After taskbar icons
-    - center: Dynamic center (experimental)
-  - secondaryPosition: hidden
-    $name: Secondary taskbar position
-    $description: Applies to every secondary monitor taskbar. Shares the main taskbar's resource readings and appearance.
-    $options:
-    - hidden: Hidden
-    - follow-main: Follow main
-    - before-tray: Before system tray
-    - before-clock: Before clock (inside system tray)
-    - after-clock: After clock (inside system tray)
-    - before-start: Before Windows Start
-    - before-icons: Before taskbar icons
-    - after-icons: After taskbar icons
-    - center: Dynamic center (experimental)
-  - centerOffset: 0
-    $name: Dynamic center offset
-    $description: Horizontal logical pixels (-2000–2000). Shared across monitors. Dynamic center moves right for buttons and hides if it cannot fit.
-  - layout: individual
-    $name: Layout
-    $options:
-    - individual: Individual pills
-    - grouped: Grouped pill
-  - Dimensions:
-    - resourceMinWidth: 65
-      $name: CPU, RAM and GPU minimum width
-      $description: Logical pixels (48–400), before adding a boxed graph. Content may require more space.
-    - networkMinWidth: 92
-      $name: Upload and Download minimum width
-      $description: Logical pixels per direction (48–400), before adding a boxed graph.
-    $name: Dimensions
-  - Spacing:
-    - padding: 8,0,8,0
-      $name: Inner padding
-      $description: Left,Top,Right,Bottom in logical pixels (0–64 each).
-    - identifierGap: 7
-      $name: Identifier-to-value gap
-    - graphGap: 8
-      $name: Gap before boxed graph
-    - pillSpacing: 6
-      $name: Spacing between individual pills
-      $description: Ignored in grouped mode.
-    - margin: 0,5,0,5
-      $name: Outer margin
-      $description: Left,Top,Right,Bottom in logical pixels (-100–100 each).
-    $name: Spacing
-  $name: Layout
-- Style:
-  - preset: current
+- General:
+  - Resources:
+    - showCpu: true
+      $name: Show CPU usage
+    - showRam: true
+      $name: Show RAM usage
+    - showGpu: true
+      $name: Show GPU usage
+    - showNetwork: false
+      $name: Show Network speed
+      $description: Shows both Upload and Download.
+    - networkSpeedUnits: bits
+      $name: Network speed units
+      $options:
+      - bits: Bits/s (Kbps, Mbps)
+      - bytes: Bytes/s (KB/s, MB/s)
+    $name: Resources
+  - theme: system
     $name: Theme
     $options:
-    - current: Current appearance
     - system: Windows / System
+    - simple-system-resources: Simple System Resources
     - monochrome: Monochrome
     - catppuccin: Catppuccin Mocha
     - catppuccin-latte: Catppuccin Latte
@@ -240,32 +130,116 @@ by Microsoft or PowerToys.
   - automaticTheme: false
     $name: Automatic light/dark theme
     $description: Switches established light/dark palette pairs with Windows taskbar mode. Windows/System and Monochrome always update live.
-  - Background:
-    - style: solid
-      $name: Background style
+  - mainPosition: before-tray
+    $name: Main taskbar position
+    $options:
+    - before-tray: Before system tray
+    - before-clock: Before clock (inside system tray)
+    - after-clock: After clock (inside system tray)
+    - before-start: Before Windows Start
+    - before-icons: Before taskbar icons
+    - after-icons: After taskbar icons
+    - center: Dynamic center (experimental)
+  $name: General
+- TaskbarPill:
+  - Monitors:
+    - showPrimary: true
+      $name: Show on primary taskbar
+    - showSecondary: true
+      $name: Show on secondary taskbars
+      $description: Also choose a secondary position other than Hidden. Turning this off preserves your selected position.
+    - secondaryPosition: hidden
+      $name: Secondary taskbar position
+      $description: Applies to every secondary monitor taskbar. Shares the main taskbar's resource readings and appearance.
       $options:
-      - solid: Solid
-      - transparent: Transparent
-    - opacity: 100
-      $name: Background opacity
-      $description: Percentage (0–100). Only affects the Solid background; text, icons, borders and graphs retain their own opacity.
-    $name: Background
-  - Shape:
-    - height: 0
-      $name: Pill height
-      $description: 0 = Auto (follows the styled taskbar height). Positive values set a manual height in logical pixels (up to 100).
-    - cornerRadius: 12
-      $name: Corner radius
-      $description: Logical pixels. Limited to half the effective pill height.
-    - borderEnabled: false
-      $name: Show border
-    - borderThickness: 1
-      $name: Border thickness
-      $description: Logical pixels (0–4).
-    - borderOpacity: 20
-      $name: Border opacity
-      $description: Percentage (0–100). Applies to theme and custom border colours in both layouts.
-    $name: Shape
+      - hidden: Hidden
+      - follow-main: Follow main
+      - before-tray: Before system tray
+      - before-clock: Before clock (inside system tray)
+      - after-clock: After clock (inside system tray)
+      - before-start: Before Windows Start
+      - before-icons: Before taskbar icons
+      - after-icons: After taskbar icons
+      - center: Dynamic center (experimental)
+    $name: Monitors
+  - Layout:
+    - layout: individual
+      $name: Layout
+      $options:
+      - individual: Individual pills
+      - grouped: Grouped pill
+    - centerOffset: 0
+      $name: Dynamic center offset
+      $description: Horizontal logical pixels (-2000–2000). Shared across monitors. Dynamic center moves right for buttons and hides if it cannot fit.
+    - Dimensions:
+      - resourceMinWidth: 65
+        $name: CPU, RAM and GPU minimum width
+        $description: Logical pixels (48–400), before adding a boxed graph. Content may require more space.
+      - networkMinWidth: 92
+        $name: Upload and Download minimum width
+        $description: Logical pixels per direction (48–400), before adding a boxed graph.
+      $name: Dimensions
+    - Spacing:
+      - padding: 8,0,8,0
+        $name: Inner padding
+        $description: Left,Top,Right,Bottom in logical pixels (0–64 each).
+      - identifierGap: 7
+        $name: Identifier-to-value gap
+      - graphGap: 8
+        $name: Gap before boxed graph
+      - pillSpacing: 6
+        $name: Spacing between individual pills
+        $description: Ignored in grouped mode.
+      - margin: 0,5,0,5
+        $name: Outer margin
+        $description: Left,Top,Right,Bottom in logical pixels (-100–100 each).
+      $name: Spacing
+    $name: Layout
+  - Content:
+    - resourceIdentifier: icon
+      $name: Resource identifier
+      $options:
+      - icon: Icon
+      - name: Name
+      - none: None
+    - showResourceNames: false
+      $name: Show resource names
+      $description: Adds a second row, except in Name identifier mode.
+    - graphStyle: none
+      $name: Graph style
+      $options:
+      - none: None
+      - boxed: Boxed
+      - background: Background
+    $name: Content
+  - Appearance:
+    - Background:
+      - style: solid
+        $name: Background style
+        $options:
+        - solid: Solid
+        - transparent: Transparent
+      - opacity: 100
+        $name: Background opacity
+        $description: Percentage (0–100). Only affects the Solid background; text, icons, borders and graphs retain their own opacity.
+      $name: Background
+    - Shape:
+      - height: 0
+        $name: Pill height
+        $description: 0 = Auto (follows the styled taskbar height). Positive values set a manual height in logical pixels (up to 100).
+      - cornerRadius: 12
+        $name: Corner radius
+        $description: Logical pixels. Limited to half the effective pill height.
+      - borderEnabled: false
+        $name: Show border
+      - borderThickness: 1
+        $name: Border thickness
+        $description: Logical pixels (0–4).
+      - borderOpacity: 20
+        $name: Border opacity
+        $description: Percentage (0–100). Applies to theme and custom border colours in both layouts.
+      $name: Shape
+    $name: Appearance
   - Typography:
     - fontFamily: Segoe UI
       $name: Font family
@@ -301,23 +275,58 @@ by Microsoft or PowerToys.
       $name: Background line opacity
       $description: Percentage (0–100). Boxed graph lines remain fully opaque.
     $name: Graphs
-  $name: Style
-- Overrides:
+  $name: Taskbar pill
+- Flyout:
+  - Behavior:
+    - openOnHover: false
+      $name: Open on hover
+      $description: Resource flyouts, including the shared Network flyout. Click always opens them. The flyout stays open while you move into it; click outside or press Escape to close.
+    - hoverDelay: 500
+      $name: Hover opening delay (ms)
+      $description: Keep the pointer over a pill for this long before opening (100–3000 ms). Passing over it cancels the wait. Click opens immediately.
+    - hoverCloseDelay: 300
+      $name: Hover closing delay (ms)
+      $description: Time to cross the gap or return after leaving a hover-opened flyout (100–3000 ms). Click-opened flyouts keep normal dismissal behavior.
+    - animations: true
+      $name: Flyout animations
+      $description: Uses Windows native opening and closing animations.
+    $name: Behavior
+  - Layout:
+    - gap: 15
+      $name: Gap from taskbar
+      $description: Additional native flyout spacing in logical pixels (0–40). Default matches Mawaqit's floating popup spacing.
+    - screenEdgeMargin: 10
+      $name: Screen edge margin
+      $description: Minimum outer spacing from the monitor work-area edges in logical pixels (0–100), scaled for DPI. The taskbar-facing edge uses Gap from taskbar instead.
+    - width: 575
+      $name: Width
+      $description: Logical pixels (320–1000), limited to the monitor work area.
+    - height: 400
+      $name: Height
+      $description: Preferred minimum in logical pixels (240–900). Grows to fit content and the selected process count, limited to the monitor work area. No scrollbar.
+    - graphHeight: 100
+      $name: Graph height
+      $description: Logical pixels (80–400). Shared graph height for CPU, Memory and GPU flyouts.
+    - topCount: 3
+      $name: Number of top processes
+      $description: 1–10 processes ranked by CPU usage, private working set or GPU usage, depending on the flyout. Protected or inaccessible processes are skipped.
+    $name: Layout
+  $name: Flyout
+- ThemeColorOverrides:
   - background: ''
     $name: Background
-  - border: ''
-    $name: Border
-  - identifier: ''
-    $name: Identifier
-  - value: ''
-    $name: Value
-  - name: ''
-    $name: Second-row name
-  - graph: ''
-    $name: Graph
-  $name: Theme colour overrides
-  $description: Optional six-digit RGB colours, with or without "#"; surrounding whitespace is ignored. Empty or invalid values
-    inherit the selected theme. Background graph fill uses the Graph colour and configured fill opacity.
+    $description: Shared by the taskbar pill and flyout. Leave empty to use the selected theme.
+  - text: ''
+    $name: Text
+    $description: Primary text for both surfaces. Leave empty to use the selected theme.
+  - accent: ''
+    $name: Accent
+    $description: Graphs, borders and selected emphasis such as the Top processes heading. Leave empty to use the selected theme.
+  - muted: ''
+    $name: Muted text
+    $description: Secondary text such as pill names and flyout labels. Leave empty to use the selected theme.
+  $name: Theme color overrides
+  $description: Optional six-digit RGB colours, with or without "#"; surrounding whitespace is ignored. Empty or invalid values inherit the selected theme.
 */
 // ==/WindhawkModSettings==
 // WIN32_LEAN_AND_MEAN applies before Windhawk's preincluded Windows header,
@@ -638,12 +647,10 @@ struct AppearanceConfig {
     double backgroundOpacity = 1;
     Thickness padding{8, 0, 8, 0}, margin{0, 5, 0, 5};
     double identifierGap = 7, pillSpacing = 6;
-    winrt::Windows::UI::Color background{255, 0x21, 0x1E, 0x32};
-    winrt::Windows::UI::Color borderColor{255, 180, 190, 254};
-    winrt::Windows::UI::Color identifierColor{255, 240, 238, 246};
-    winrt::Windows::UI::Color valueColor{255, 240, 238, 246};
-    winrt::Windows::UI::Color nameColor{255, 240, 238, 246};
-    winrt::Windows::UI::Color graphColor{255, 180, 190, 254};
+    winrt::Windows::UI::Color backgroundColor{255, 0x21, 0x1E, 0x32};
+    winrt::Windows::UI::Color textColor{255, 0xF0, 0xEE, 0xF6};
+    winrt::Windows::UI::Color accentColor{255, 0xB4, 0xBE, 0xFE};
+    winrt::Windows::UI::Color mutedColor{255, 0xF0, 0xEE, 0xF6};
     unsigned revision = 0;
 };
 SRWLOCK appearanceLock = SRWLOCK_INIT;
@@ -809,6 +816,7 @@ void RecordGraphSample() {
     ReleaseSRWLockExclusive(&historyLock);
 }
 
+void ApplyRoundedGraphClip(Canvas const& canvas, double radius);
 void DrawGraphs(StackPanel const& group) {
     if (!group) return;
     AcquireSRWLockShared(&historyLock);
@@ -834,11 +842,26 @@ void DrawGraphs(StackPanel const& group) {
         background.Children().Clear();
         if (style == GraphStyle::None) continue;
         auto canvas = style == GraphStyle::Boxed ? boxed : background;
-        double width = style == GraphStyle::Boxed ? appearance.graphWidth : grid.ActualWidth();
+        double width = style == GraphStyle::Boxed ? appearance.graphWidth : background.ActualWidth();
+        if (style == GraphStyle::Background && width <= 0)
+            width = grid.ActualWidth() + appearance.padding.Left + appearance.padding.Right;
         if (width <= 2) continue;
-        double height = canvas.Height();
+        double height = style == GraphStyle::Background ? background.ActualHeight() : canvas.Height();
+        if (height <= 0) height = canvas.Height();
         double inset = std::max(1.0, appearance.stroke / 2);
         double scale = metric < 3 ? 100.0 : networkMax;
+        ULONGLONG firstTime = 0, lastTime = 0;
+        if (style == GraphStyle::Background) {
+            for (auto const& sample : history) {
+                double value = sample.values[metric];
+                if (now - sample.time > 60000 || !std::isfinite(value) || value < 0) continue;
+                if (!firstTime) firstTime = sample.time;
+                lastTime = sample.time;
+            }
+            auto corners = pill.CornerRadius();
+            ApplyRoundedGraphClip(background,
+                std::max(0.0, corners.TopLeft - pill.BorderThickness().Left));
+        }
         winrt::Windows::UI::Xaml::Shapes::Polyline line{nullptr};
         winrt::Windows::UI::Xaml::Shapes::Polygon area{nullptr};
         ULONGLONG previous = 0;
@@ -856,19 +879,23 @@ void DrawGraphs(StackPanel const& group) {
                 finishArea();
                 if (style == GraphStyle::Background) {
                     area = winrt::Windows::UI::Xaml::Shapes::Polygon();
-                    auto fill = appearance.graphColor;
+                    auto fill = appearance.accentColor;
                     fill.A = appearance.fillAlpha;
                     area.Fill(SolidColorBrush(fill));
                     canvas.Children().Append(area);
                 }
                 line = winrt::Windows::UI::Xaml::Shapes::Polyline();
-                auto stroke = appearance.graphColor;
+                auto stroke = appearance.accentColor;
                 stroke.A = style == GraphStyle::Background ? appearance.backgroundLineAlpha : 255;
                 line.Stroke(SolidColorBrush(stroke));
                 line.StrokeThickness(appearance.stroke);
                 canvas.Children().Append(line);
             }
-            float x = float(inset + (width - 2 * inset) * (1.0 - double(now - sample.time) / 60000.0));
+            float x = style == GraphStyle::Background
+                ? (firstTime == lastTime
+                    ? float(width)
+                    : float(width * double(sample.time - firstTime) / double(lastTime - firstTime)))
+                : float(inset + (width - 2 * inset) * (1.0 - double(now - sample.time) / 60000.0));
             float y = float(height - inset - (height - 2 * inset) * std::clamp(value / scale, 0.0, 1.0));
             if (area) {
                 if (area.Points().Size() == 0)
@@ -1926,7 +1953,7 @@ TextBlock FlyoutText(wchar_t const* text, double size = 12) {
     TextBlock block;
     block.Text(text);
     block.FontSize(size);
-    block.Foreground(SolidColorBrush(GetAppearance().identifierColor));
+    block.Foreground(SolidColorBrush(GetAppearance().textColor));
     block.TextWrapping(TextWrapping::NoWrap);
     return block;
 }
@@ -1964,6 +1991,36 @@ void RefreshFlyoutForeground(DependencyObject const& node, winrt::Windows::UI::C
         RefreshFlyoutForeground(scroll.Content().try_as<DependencyObject>(), color);
     }
 }
+void ApplyFlyoutSemanticColors(Grid const& root, AppearanceConfig const& a) {
+    static constexpr wchar_t const* metricLabels[] = {
+        L"FlyoutMetricLabel0", L"FlyoutMetricLabel1",
+        L"FlyoutMetricLabel2", L"FlyoutMetricLabel3",
+    };
+    for (auto name : metricLabels) {
+        auto label = FindFlyoutPart(root, name).try_as<TextBlock>();
+        if (label) label.Foreground(SolidColorBrush(a.mutedColor));
+    }
+    auto hardware = FindFlyoutPart(root, L"FlyoutHardware").try_as<TextBlock>();
+    if (hardware) hardware.Foreground(SolidColorBrush(a.mutedColor));
+    auto topCaption = FindFlyoutPart(root, L"CpuFlyoutTopCaption").try_as<TextBlock>();
+    if (topCaption) topCaption.Foreground(SolidColorBrush(a.accentColor));
+    wchar_t const* headers[] = {L"CpuFlyoutProcessHeaderName", L"CpuFlyoutProcessHeaderPid",
+                                L"CpuFlyoutProcessHeaderMetric"};
+    for (auto name : headers) {
+        auto header = FindFlyoutPart(root, name).try_as<TextBlock>();
+        if (header) header.Foreground(SolidColorBrush(a.mutedColor));
+    }
+    auto processes = FindFlyoutPart(root, L"CpuFlyoutProcesses").try_as<StackPanel>();
+    if (processes) {
+        for (uint32_t i = 0; i < processes.Children().Size(); ++i) {
+            auto row = processes.Children().GetAt(i).try_as<Grid>();
+            if (row && row.Children().Size() >= 3) {
+                auto pid = row.Children().GetAt(1).try_as<TextBlock>();
+                if (pid) pid.Foreground(SolidColorBrush(a.mutedColor));
+            }
+        }
+    }
+}
 double ResourceFlyoutRadius(Flyout const& flyout, AppearanceConfig const& a) {
     auto content = flyout.Content().try_as<Grid>();
     auto group = flyout.OverlayInputPassThroughElement().try_as<StackPanel>();
@@ -1979,7 +2036,10 @@ double ResourceFlyoutRadius(Flyout const& flyout, AppearanceConfig const& a) {
     return a.radius;
 }
 void ApplyRoundedGraphClip(Canvas const& canvas, double radius) {
-    double width = canvas.Width(), height = canvas.Height();
+    double width = canvas.ActualWidth(), height = canvas.ActualHeight();
+    if (width <= 0) width = canvas.Width();
+    if (height <= 0) height = canvas.Height();
+    if (width <= 0 || height <= 0) return;
     float r = float(std::clamp(radius, 0.0, std::min(width, height) / 2));
     auto visual = winrt::Windows::UI::Xaml::Hosting::ElementCompositionPreview::GetElementVisual(canvas);
     auto compositor = visual.Compositor();
@@ -2007,9 +2067,9 @@ void StyleResourceFlyout(Flyout const& flyout, AppearanceConfig const& a, double
     double radius = ResourceFlyoutRadius(flyout, a);
     style.Setters().Append(Setter(Control::CornerRadiusProperty(), winrt::box_value(CornerRadius{radius, radius, radius, radius})));
     style.Setters().Append(Setter(Control::PaddingProperty(), winrt::box_value(Thickness{16, 16, 16, 16})));
-    style.Setters().Append(Setter(Control::BackgroundProperty(), SolidColorBrush(a.background)));
-    style.Setters().Append(Setter(Control::ForegroundProperty(), SolidColorBrush(a.identifierColor)));
-    auto border = a.borderColor;
+    style.Setters().Append(Setter(Control::BackgroundProperty(), SolidColorBrush(a.backgroundColor)));
+    style.Setters().Append(Setter(Control::ForegroundProperty(), SolidColorBrush(a.textColor)));
+    auto border = a.accentColor;
     border.A = 51;
     style.Setters().Append(Setter(Control::BorderBrushProperty(), SolidColorBrush(border)));
     flyout.FlyoutPresenterStyle(style);
@@ -2069,13 +2129,13 @@ void RefreshResourceFlyout(Flyout const& flyout) {
     };
     if (network) {
         auto snapshot = ReadNetworkSnapshot();
-        setText(L"NetworkFlyoutAdapter", snapshot.adapter.empty() ? L"Adapter unavailable" : snapshot.adapter);
+        setText(L"FlyoutHardware", snapshot.adapter.empty() ? L"Adapter unavailable" : snapshot.adapter);
         setText(L"NetworkFlyoutUpload", FormatRate(snapshot.rates.upload));
         setText(L"NetworkFlyoutDownload", FormatRate(snapshot.rates.download));
     } else if (gpu) {
         gpuDetailDemandUntil = GetTickCount64() + 3000;
         auto details = ReadGpuDetails();
-        setText(L"GpuFlyoutHardware", details.name.empty() ? L"Adapter unavailable" : details.name);
+        setText(L"FlyoutHardware", details.name.empty() ? L"Adapter unavailable" : details.name);
         setText(L"GpuFlyoutDedicated", GpuMemoryAmount(details.dedicated, details.dedicatedTotal));
         setText(L"GpuFlyoutShared", GpuMemoryAmount(details.shared, details.sharedTotal));
         setText(L"GpuFlyoutTotal", GpuMemoryAmount(details.dedicated < 0 || details.shared < 0 ? -1 : details.dedicated + details.shared,
@@ -2084,29 +2144,35 @@ void RefreshResourceFlyout(Flyout const& flyout) {
         if (processes) for (uint32_t i = 0; i < processes.Children().Size(); ++i) {
             auto row = processes.Children().GetAt(i).as<Grid>();
             auto name = row.Children().GetAt(0).as<TextBlock>();
-            auto value = row.Children().GetAt(1).as<TextBlock>();
-            std::wstring label = i < details.processes.size() ? details.processes[i].name + L" (" + std::to_wstring(details.processes[i].pid) + L")" :
+            auto pid = row.Children().GetAt(1).as<TextBlock>();
+            auto value = row.Children().GetAt(2).as<TextBlock>();
+            std::wstring label = i < details.processes.size() ? details.processes[i].name :
                 (i == 0 ? (details.ready ? L"No readable GPU process samples" : L"Sampling GPU processes…") : L"");
+            std::wstring pidValue = i < details.processes.size() ? std::to_wstring(details.processes[i].pid) : L"";
             wchar_t percent[32] = L"--";
             if (i < details.processes.size()) swprintf_s(percent, L"%.1f%%", details.processes[i].percent);
             if (name.Text() != label) name.Text(label);
+            if (pid.Text() != pidValue) pid.Text(pidValue);
             if (value.Text() != percent) value.Text(percent);
         }
     } else if (memory) {
         memoryDetailDemandUntil = GetTickCount64() + 3000;
         auto details = ReadMemoryDetails();
-        setText(L"MemoryFlyoutHardware", details.hardware);
+        setText(L"FlyoutHardware", details.hardware);
         setText(L"MemoryFlyoutUsed", details.total ? MemoryAmount(details.total - std::min(details.total, details.available), true) : L"-- GB");
         setText(L"MemoryFlyoutAvailable", details.total ? MemoryAmount(details.available, true) : L"-- GB");
         auto processes = FindFlyoutPart(root, L"CpuFlyoutProcesses").try_as<StackPanel>();
         if (processes) for (uint32_t i = 0; i < processes.Children().Size(); ++i) {
             auto row = processes.Children().GetAt(i).as<Grid>();
             auto name = row.Children().GetAt(0).as<TextBlock>();
-            auto value = row.Children().GetAt(1).as<TextBlock>();
-            std::wstring label = i < details.processes.size() ? details.processes[i].name + L" (" + std::to_wstring(details.processes[i].pid) + L")" :
+            auto pid = row.Children().GetAt(1).as<TextBlock>();
+            auto value = row.Children().GetAt(2).as<TextBlock>();
+            std::wstring label = i < details.processes.size() ? details.processes[i].name :
                 (i == 0 ? (details.ready ? L"No readable process samples" : L"Sampling processes…") : L"");
+            std::wstring pidValue = i < details.processes.size() ? std::to_wstring(details.processes[i].pid) : L"";
             auto amount = i < details.processes.size() ? MemoryAmount(details.processes[i].bytes) : L"--";
             if (name.Text() != label) name.Text(label);
+            if (pid.Text() != pidValue) pid.Text(pidValue);
             if (value.Text() != amount) value.Text(amount);
         }
     } else {
@@ -2123,12 +2189,15 @@ void RefreshResourceFlyout(Flyout const& flyout) {
         if (processes) for (uint32_t i = 0; i < processes.Children().Size(); ++i) {
             auto row = processes.Children().GetAt(i).as<Grid>();
             auto name = row.Children().GetAt(0).as<TextBlock>();
-            auto value = row.Children().GetAt(1).as<TextBlock>();
-            std::wstring label = i < details.processes.size() ? details.processes[i].name + L" (" + std::to_wstring(details.processes[i].pid) + L")" :
+            auto pid = row.Children().GetAt(1).as<TextBlock>();
+            auto value = row.Children().GetAt(2).as<TextBlock>();
+            std::wstring label = i < details.processes.size() ? details.processes[i].name :
                 (i == 0 ? (details.ready ? L"No readable process samples" : L"Sampling processes…") : L"");
+            std::wstring pidValue = i < details.processes.size() ? std::to_wstring(details.processes[i].pid) : L"";
             wchar_t percent[32] = L"--";
             if (i < details.processes.size()) swprintf_s(percent, L"%.1f%%", details.processes[i].percent);
             if (name.Text() != label) name.Text(label);
+            if (pid.Text() != pidValue) pid.Text(pidValue);
             if (value.Text() != percent) value.Text(percent);
         }
     }
@@ -2136,13 +2205,14 @@ void RefreshResourceFlyout(Flyout const& flyout) {
     auto a = GetAppearance();
     if (winrt::unbox_value_or<unsigned>(root.Tag(), 0) != a.revision) {
         StyleResourceFlyout(flyout, a, root.Width() + 36, root.Height() + 36);
-        RefreshFlyoutForeground(root, a.identifierColor);
+        RefreshFlyoutForeground(root, a.textColor);
+        ApplyFlyoutSemanticColors(root, a);
         auto frame = FindFlyoutPart(root, L"CpuFlyoutGraphBorder").try_as<Border>();
         auto graph = FindFlyoutPart(root, L"CpuFlyoutGraph").try_as<Canvas>();
         double radius = ResourceFlyoutRadius(flyout, a);
         if (frame) {
             frame.CornerRadius({radius, radius, radius, radius});
-            SolidColorBrush border(a.borderColor);
+            SolidColorBrush border(a.accentColor);
             border.Opacity(a.borderOpacity);
             frame.BorderBrush(border);
         }
@@ -2161,7 +2231,7 @@ void RefreshResourceFlyout(Flyout const& flyout) {
         winrt::Windows::UI::Xaml::Shapes::Line gridLine;
         gridLine.X1(0); gridLine.X2(width);
         gridLine.Y1(i * (height - 2) / 4 + 1); gridLine.Y2(gridLine.Y1());
-        gridLine.Stroke(SolidColorBrush(a.identifierColor));
+        gridLine.Stroke(SolidColorBrush(a.textColor));
         gridLine.StrokeThickness(1);
         gridLine.Opacity(0.12);
         canvas.Children().Append(gridLine);
@@ -2177,6 +2247,13 @@ void RefreshResourceFlyout(Flyout const& flyout) {
     }
     networkMax *= 1.1;
     auto drawSeries = [&](unsigned metric, winrt::Windows::UI::Color color, double scale) {
+        ULONGLONG firstTime = 0, lastTime = 0;
+        for (auto const& sample : history) {
+            double value = sample.values[metric];
+            if (now - sample.time > 60000 || !std::isfinite(value) || value < 0) continue;
+            if (!firstTime) firstTime = sample.time;
+            lastTime = sample.time;
+        }
         winrt::Windows::UI::Xaml::Shapes::Polyline line{nullptr};
         winrt::Windows::UI::Xaml::Shapes::Polygon area{nullptr};
         float lastX = 0;
@@ -2202,7 +2279,12 @@ void RefreshResourceFlyout(Flyout const& flyout) {
                 line.StrokeThickness(1.5);
                 canvas.Children().Append(line);
             }
-            float x = float(1 + (width - 2) * (1 - double(now - sample.time) / 60000));
+            // Stretch the available sample range to the graph's inside edges.
+            // This avoids the sampling interval leaving a visible gap at the left
+            // and removes the deliberate one-pixel inset at the right.
+            float x = firstTime == lastTime
+                ? float(width)
+                : float(width * double(sample.time - firstTime) / double(lastTime - firstTime));
             float y = float(height - 1 - (height - 2) * std::clamp(value / scale, 0.0, 1.0));
             if (area) {
                 if (!area.Points().Size()) area.Points().Append(winrt::Windows::Foundation::Point{x, float(height - 1)});
@@ -2215,10 +2297,10 @@ void RefreshResourceFlyout(Flyout const& flyout) {
         finishArea();
     };
     if (resource == 3) {
-        drawSeries(3, a.graphColor, networkMax);       // Upload
-        drawSeries(4, a.identifierColor, networkMax);  // Download
+        drawSeries(3, a.accentColor, networkMax);       // Upload
+        drawSeries(4, a.textColor, networkMax);  // Download
     } else {
-        drawSeries(unsigned(resource), a.graphColor, 100.0);
+        drawSeries(unsigned(resource), a.accentColor, 100.0);
     }
 }
 void UpdateResourceFlyouts() {
@@ -2353,14 +2435,14 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
     titleLeft.Orientation(Orientation::Horizontal);
     titleLeft.Spacing(8);
     auto cpuIcon = MakeIcon(network ? L"\uE774" : gpu ? L"\uE950" : memory ? L"\uE964" : L"\uE9D9");
-    cpuIcon.as<FontIcon>().Foreground(SolidColorBrush(GetAppearance().identifierColor));
+    cpuIcon.as<FontIcon>().Foreground(SolidColorBrush(GetAppearance().textColor));
     titleLeft.Children().Append(cpuIcon);
     auto heading = FlyoutText(network ? L"Network" : gpu ? L"GPU" : memory ? L"Memory" : L"CPU", 16);
     heading.FontWeight(winrt::Windows::UI::Text::FontWeight{600});
     titleLeft.Children().Append(heading);
     title.Children().Append(titleLeft);
     auto processor = FlyoutText(resource ? L"" : ResourceCpuName().c_str(), 11);
-    if (resource) processor.Name(network ? L"NetworkFlyoutAdapter" : gpu ? L"GpuFlyoutHardware" : L"MemoryFlyoutHardware");
+    processor.Name(L"FlyoutHardware");
     processor.TextTrimming(TextTrimming::CharacterEllipsis);
     processor.TextAlignment(TextAlignment::Right);
     processor.VerticalAlignment(VerticalAlignment::Center);
@@ -2379,7 +2461,7 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
     graphBorder.CornerRadius({radius, radius, radius, radius});
     graphBorder.BorderThickness({1, 1, 1, 1});
     auto appearance = GetAppearance();
-    SolidColorBrush graphBorderBrush(appearance.borderColor);
+    SolidColorBrush graphBorderBrush(appearance.accentColor);
     graphBorderBrush.Opacity(appearance.borderOpacity);
     graphBorder.BorderBrush(graphBorderBrush);
     graphBorder.Child(graph);
@@ -2392,6 +2474,7 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
             StackPanel block;
             Grid::SetColumn(block, i);
             auto label = FlyoutText(i == 0 ? L"Upload" : L"Download", 11);
+            label.Name(i == 0 ? L"FlyoutMetricLabel0" : L"FlyoutMetricLabel1");
             auto value = FlyoutText(L"--", 18);
             value.Name(i == 0 ? L"NetworkFlyoutUpload" : L"NetworkFlyoutDownload");
             if (i == 1) { label.TextAlignment(TextAlignment::Right); value.TextAlignment(TextAlignment::Right); }
@@ -2407,6 +2490,8 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
             info.ColumnDefinitions().Append(column);
             StackPanel block; Grid::SetColumn(block, i);
             auto label = FlyoutText(labels[i], 11);
+            label.Name(i == 0 ? L"FlyoutMetricLabel0" : i == 1 ? L"FlyoutMetricLabel1" :
+                       i == 2 ? L"FlyoutMetricLabel2" : L"FlyoutMetricLabel3");
             auto value = FlyoutText(i == 3 ? L"--%" : L"-- / -- GB", 16);
             value.Name(parts[i]);
             if (i >= 2) { label.TextAlignment(TextAlignment::Right); value.TextAlignment(TextAlignment::Right); }
@@ -2422,6 +2507,7 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
             StackPanel block;
             Grid::SetColumn(block, i);
             auto label = FlyoutText(labels[i], 11);
+            label.Name(i == 0 ? L"FlyoutMetricLabel0" : i == 1 ? L"FlyoutMetricLabel1" : L"FlyoutMetricLabel2");
             auto value = FlyoutText(i == 2 ? L"--%" : L"-- GB", 18);
             value.Name(parts[i]);
             if (i == 2) { label.TextAlignment(TextAlignment::Right); value.TextAlignment(TextAlignment::Right); }
@@ -2434,7 +2520,9 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
             info.ColumnDefinitions().Append(column);
         }
         StackPanel usage;
-        usage.Children().Append(FlyoutText(L"Utilization", 11));
+        auto usageLabel = FlyoutText(L"Utilization", 11);
+        usageLabel.Name(L"FlyoutMetricLabel0");
+        usage.Children().Append(usageLabel);
         auto utilization = FlyoutText(L"--%", 18);
         utilization.Name(L"CpuFlyoutUtilization");
         usage.Children().Append(utilization);
@@ -2442,6 +2530,7 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
         StackPanel speed;
         Grid::SetColumn(speed, 1);
         auto speedLabel = FlyoutText(L"Clock speed", 11);
+        speedLabel.Name(L"FlyoutMetricLabel1");
         speedLabel.TextAlignment(TextAlignment::Right);
         auto speedValue = FlyoutText(L"-- GHz", 18);
         speedValue.Name(L"CpuFlyoutClock");
@@ -2451,31 +2540,69 @@ Flyout BuildResourceFlyout(double width, double height, double radius, double he
         info.Children().Append(speed);
     }
     body.Children().Append(info);
-    auto topCaption = FlyoutText(network ? L"" : L"Top processes", 12);
+    StackPanel processSection;
+    processSection.Name(L"CpuFlyoutProcessSection");
+    processSection.Padding({5, 5, 5, 5});
+    processSection.Spacing(3);
+    auto topCaption = FlyoutText(network ? L"" : L"Top processes", 14);
     topCaption.Name(L"CpuFlyoutTopCaption");
+    topCaption.FontWeight(winrt::Windows::UI::Text::FontWeight{600});
+    topCaption.Margin({0, 0, 0, 2});
     if (network) topCaption.Visibility(Visibility::Collapsed);
-    body.Children().Append(topCaption);
+    processSection.Children().Append(topCaption);
+    Grid processHeader;
+    processHeader.Height(18);
+    ColumnDefinition processNameHeaderColumn; processNameHeaderColumn.Width({1, GridUnitType::Star});
+    ColumnDefinition pidHeaderColumn; pidHeaderColumn.Width({68, GridUnitType::Pixel});
+    ColumnDefinition metricHeaderColumn; metricHeaderColumn.Width({76, GridUnitType::Pixel});
+    processHeader.ColumnDefinitions().Append(processNameHeaderColumn);
+    processHeader.ColumnDefinitions().Append(pidHeaderColumn);
+    processHeader.ColumnDefinitions().Append(metricHeaderColumn);
+    auto processHeaderName = FlyoutText(L"Name", 10);
+    processHeaderName.Name(L"CpuFlyoutProcessHeaderName");
+    processHeader.Children().Append(processHeaderName);
+    auto processHeaderPid = FlyoutText(L"PID", 10);
+    processHeaderPid.Name(L"CpuFlyoutProcessHeaderPid");
+    processHeaderPid.TextAlignment(TextAlignment::Right);
+    processHeaderPid.Margin({0, 0, 8, 0});
+    Grid::SetColumn(processHeaderPid, 1);
+    processHeader.Children().Append(processHeaderPid);
+    auto processHeaderMetric = FlyoutText(network ? L"" : gpu ? L"GPU" : memory ? L"Memory" : L"CPU", 10);
+    processHeaderMetric.Name(L"CpuFlyoutProcessHeaderMetric");
+    processHeaderMetric.TextAlignment(TextAlignment::Right);
+    Grid::SetColumn(processHeaderMetric, 2);
+    processHeader.Children().Append(processHeaderMetric);
+    if (network) processHeader.Visibility(Visibility::Collapsed);
+    processSection.Children().Append(processHeader);
     StackPanel processes;
     processes.Name(L"CpuFlyoutProcesses");
-    if (network) processes.Visibility(Visibility::Collapsed);
     for (int i = 0; i < 10; ++i) {
         Grid row;
         row.Height(22);
         ColumnDefinition label; label.Width({1, GridUnitType::Star});
-        ColumnDefinition value; value.Width({1, GridUnitType::Auto});
+        ColumnDefinition pid; pid.Width({68, GridUnitType::Pixel});
+        ColumnDefinition value; value.Width({76, GridUnitType::Pixel});
         row.ColumnDefinitions().Append(label); row.ColumnDefinitions().Append(value);
+        row.ColumnDefinitions().InsertAt(1, pid);
         auto process = FlyoutText(i == 0 ? L"Sampling processes…" : L"");
         process.TextTrimming(TextTrimming::CharacterEllipsis);
-        process.Margin({0, 0, 12, 0});
+        process.Margin({0, 0, 8, 0});
         row.Children().Append(process);
+        auto processPid = FlyoutText(L"");
+        processPid.TextAlignment(TextAlignment::Right);
+        processPid.Margin({0, 0, 8, 0});
+        Grid::SetColumn(processPid, 1);
+        row.Children().Append(processPid);
         auto amount = FlyoutText(L"--");
         amount.TextAlignment(TextAlignment::Right);
-        Grid::SetColumn(amount, 1);
+        Grid::SetColumn(amount, 2);
         row.Children().Append(amount);
         row.Visibility(i < flyoutTopCount ? Visibility::Visible : Visibility::Collapsed);
         processes.Children().Append(row);
     }
-    body.Children().Append(processes);
+    processSection.Children().Append(processes);
+    if (network) processSection.Visibility(Visibility::Collapsed);
+    body.Children().Append(processSection);
     root.Children().Append(body);
     Grid footer;
     footer.Name(L"CpuFlyoutFooter");
@@ -2959,7 +3086,7 @@ TextBlock AddPill(StackPanel const& group, wchar_t const* label,
     layout.Children().Append(graph);
     Canvas backgroundGraph;
     backgroundGraph.Height(18);
-    backgroundGraph.VerticalAlignment(VerticalAlignment::Center);
+    backgroundGraph.VerticalAlignment(VerticalAlignment::Stretch);
     backgroundGraph.IsHitTestVisible(false);
     Grid::SetColumnSpan(backgroundGraph, 4);
     Canvas::SetZIndex(backgroundGraph, -1);
@@ -3049,11 +3176,11 @@ void ApplyPillVisibility(StackPanel const& group, bool force = false) {
     bool grouped = groupedLayout.load();
     Brush background{nullptr};
     if (a.solidBackground && a.backgroundOpacity > 0) {
-        SolidColorBrush brush(a.background);
+        SolidColorBrush brush(a.backgroundColor);
         brush.Opacity(a.backgroundOpacity);
         background = brush;
     }
-    SolidColorBrush borderBrush(a.borderColor);
+    SolidColorBrush borderBrush(a.accentColor);
     borderBrush.Opacity(a.borderOpacity);
     auto surface = activeInstance->surface.get();
     if (surface) {
@@ -3081,15 +3208,15 @@ void ApplyPillVisibility(StackPanel const& group, bool force = false) {
         icon.FontSize(a.iconSize);
         icon.Width(a.iconSize);
         icon.Height(a.iconSize);
-        icon.Foreground(SolidColorBrush(a.identifierColor));
+        icon.Foreground(SolidColorBrush(a.textColor));
         auto identifier = grid.Children().GetAt(4).as<TextBlock>();
         identifier.FontFamily(font);
         identifier.FontSize(a.identifierSize);
-        identifier.Foreground(SolidColorBrush(a.identifierColor));
+        identifier.Foreground(SolidColorBrush(a.textColor));
         name.FontFamily(font);
         name.FontSize(a.nameSize);
         name.LineHeight(a.nameSize + 1);
-        name.Foreground(SolidColorBrush(a.nameColor));
+        name.Foreground(SolidColorBrush(a.mutedColor));
         auto iconVisibility = identifierMode == ResourceIdentifier::Icon ? Visibility::Visible : Visibility::Collapsed;
         auto identifierVisibility = identifierMode == ResourceIdentifier::Name ? Visibility::Visible : Visibility::Collapsed;
         if (icon.Visibility() != iconVisibility) icon.Visibility(iconVisibility);
@@ -3112,7 +3239,7 @@ void ApplyPillVisibility(StackPanel const& group, bool force = false) {
         usage.FontFamily(font);
         usage.FontSize(a.valueSize);
         usage.FontWeight(winrt::Windows::UI::Text::FontWeight{static_cast<uint16_t>(a.valueWeight)});
-        usage.Foreground(SolidColorBrush(a.valueColor));
+        usage.Foreground(SolidColorBrush(a.textColor));
         TextBlock measure;
         measure.FontFamily(font);
         measure.FontSize(a.valueSize);
@@ -3151,7 +3278,8 @@ void ApplyPillVisibility(StackPanel const& group, bool force = false) {
         auto graphVisibility = style == GraphStyle::Boxed ? Visibility::Visible : Visibility::Collapsed;
         if (graph.Visibility() != graphVisibility) graph.Visibility(graphVisibility);
         auto backgroundGraph = pill.Child().as<Grid>().Children().GetAt(3).as<Canvas>();
-        backgroundGraph.Height(graphHeight);
+        backgroundGraph.Height(std::max(0.0, height - 2 * a.border));
+        backgroundGraph.Margin({-a.padding.Left, -a.padding.Top, -a.padding.Right, -a.padding.Bottom});
         auto backgroundVisibility = style == GraphStyle::Background ? Visibility::Visible : Visibility::Collapsed;
         if (backgroundGraph.Visibility() != backgroundVisibility) backgroundGraph.Visibility(backgroundVisibility);
         pill.Background(grouped ? nullptr : background);
@@ -3447,8 +3575,9 @@ winrt::Windows::UI::Color ResourceRgb(unsigned value) {
 }
 // Palette reference: supplied Mawaqit v0.8.0-dev.47 by HHeitlager (MIT), ResolvePillPaletteBase:
 // https://github.com/hheitlager/windhawk-mawaqit/blob/main/src/windhawk-mawaqit.wh.cpp
-// Use Mawaqit text for identifiers and values, muted for names; graphs and
-// borders follow the accent. Current appearance preserves the prototype colours.
+// Share semantic palette roles across both surfaces: text for primary content,
+// muted for supporting content, and accent for graphs, borders and emphasis.
+// Simple System Resources preserves the prototype colours.
 static COLORREF ResourceWindowsAccentColor()
 {
     struct Candidate
@@ -3523,51 +3652,50 @@ void ApplyTheme(AppearanceConfig& a) {
         {L"ayu", 0x0B0F14, 0xE6E1CF, 0xFFB454, 0x8A9199},
         {L"one-dark", 0x282C34, 0xABB2BF, 0x61AFEF, 0x7F848E},
     };
-    auto selectedSetting = WindhawkUtils::StringSetting::make(L"Style.preset");
+    auto selectedSetting = WindhawkUtils::StringSetting::make(L"General.theme");
     std::wstring selected = selectedSetting.get();
+    if (selected == L"current") selected = L"simple-system-resources";
     if (selected == L"emerald-mosque") selected = L"emerald";
     bool light = ResourceSystemLightMode();
-    if (Wh_GetIntSetting(L"Style.automaticTheme")) selected = PairedResourceTheme(selected, light);
+    if (Wh_GetIntSetting(L"General.automaticTheme")) selected = PairedResourceTheme(selected, light);
     for (auto const& p : palettes) {
         if (wcscmp(selected.c_str(), p.id) != 0) continue;
-        a.background = ResourceRgb(p.background);
-        a.identifierColor = a.valueColor = ResourceRgb(p.text);
-        a.graphColor = a.borderColor = ResourceRgb(p.accent);
-        a.nameColor = ResourceRgb(p.muted);
+        a.backgroundColor = ResourceRgb(p.background);
+        a.textColor = ResourceRgb(p.text);
+        a.accentColor = ResourceRgb(p.accent);
+        a.mutedColor = ResourceRgb(p.muted);
         break;
     }
     if (wcscmp(selected.c_str(), L"custom") == 0) {
-        a.background = ResourceRgb(0x211E32);
-        a.identifierColor = a.valueColor = ResourceRgb(0xF5E6C8);
-        a.graphColor = a.borderColor = ResourceRgb(0xFFBC5E);
-        a.nameColor = ResourceRgb(0xB8A98A);
+        a.backgroundColor = ResourceRgb(0x211E32);
+        a.textColor = ResourceRgb(0xF5E6C8);
+        a.accentColor = ResourceRgb(0xFFBC5E);
+        a.mutedColor = ResourceRgb(0xB8A98A);
     }
     if (wcscmp(selected.c_str(), L"system") == 0) {
         COLORREF accent = ResourceWindowsAccentColor();
         winrt::Windows::UI::Color accentColor{255, GetRValue(accent), GetGValue(accent), GetBValue(accent)};
         if (!a.solidBackground || a.backgroundOpacity == 0) {
-            a.background = ResourceRgb(light ? 0xF2F2F2 : 0x292929);
-            a.identifierColor = a.valueColor = ResourceRgb(light ? 0x202020 : 0xF4F4F4);
-            a.nameColor = ResourceRgb(light ? 0x666666 : 0xB8B8B8);
-            a.graphColor = a.borderColor = accentColor;
+            a.backgroundColor = ResourceRgb(light ? 0xF2F2F2 : 0x292929);
+            a.textColor = ResourceRgb(light ? 0x202020 : 0xF4F4F4);
+            a.mutedColor = ResourceRgb(light ? 0x666666 : 0xB8B8B8);
+            a.accentColor = accentColor;
         } else {
-            a.background = accentColor;
-            a.identifierColor = a.valueColor = a.nameColor = a.graphColor = a.borderColor = ResourceRgb(0xFFFFFF);
+            a.backgroundColor = accentColor;
+            a.textColor = a.mutedColor = a.accentColor = ResourceRgb(0xFFFFFF);
         }
     } else if (wcscmp(selected.c_str(), L"monochrome") == 0) {
-        a.background = ResourceRgb(light ? 0xF2F2F2 : 0x202020);
-        a.identifierColor = a.valueColor = ResourceRgb(light ? 0x202020 : 0xF4F4F4);
-        a.nameColor = ResourceRgb(light ? 0x666666 : 0xB8B8B8);
-        a.graphColor = a.borderColor = ResourceRgb(light ? 0x505050 : 0xD0D0D0);
+        a.backgroundColor = ResourceRgb(light ? 0xF2F2F2 : 0x202020);
+        a.textColor = ResourceRgb(light ? 0x202020 : 0xF4F4F4);
+        a.mutedColor = ResourceRgb(light ? 0x666666 : 0xB8B8B8);
+        a.accentColor = ResourceRgb(light ? 0x505050 : 0xD0D0D0);
     }
     struct Override { wchar_t const* key; winrt::Windows::UI::Color* target; };
     Override overrides[] = {
-        {L"Overrides.background", &a.background},
-        {L"Overrides.border", &a.borderColor},
-        {L"Overrides.identifier", &a.identifierColor},
-        {L"Overrides.value", &a.valueColor},
-        {L"Overrides.name", &a.nameColor},
-        {L"Overrides.graph", &a.graphColor},
+        {L"ThemeColorOverrides.background", &a.backgroundColor},
+        {L"ThemeColorOverrides.text", &a.textColor},
+        {L"ThemeColorOverrides.accent", &a.accentColor},
+        {L"ThemeColorOverrides.muted", &a.mutedColor},
     };
     for (auto const& item : overrides) {
         auto setting = WindhawkUtils::StringSetting::make(item.key);
@@ -3609,66 +3737,66 @@ int ReadPosition(wchar_t const* key, bool secondary) {
 std::mutex settingsLoadMutex;
 void LoadSettings() {
     std::lock_guard<std::mutex> lock(settingsLoadMutex);
-    showPrimary = Wh_GetIntSetting(L"Layout.Monitors.showPrimary") != 0;
-    showSecondary = Wh_GetIntSetting(L"Layout.Monitors.showSecondary") != 0;
-    flyoutOnHover = Wh_GetIntSetting(L"Flyout.openOnHover") != 0;
-    hoverDelay = std::clamp(Wh_GetIntSetting(L"Flyout.hoverDelay"), 100, 3000);
-    hoverCloseDelay = std::clamp(Wh_GetIntSetting(L"Flyout.hoverCloseDelay"), 100, 3000);
-    flyoutAnimations = Wh_GetIntSetting(L"Flyout.animations") != 0;
-    flyoutGap = std::clamp(Wh_GetIntSetting(L"Flyout.gap"), 0, 40);
-    flyoutScreenMargin = std::clamp(Wh_GetIntSetting(L"Flyout.screenEdgeMargin"), 0, 100);
-    flyoutWidth = std::clamp(Wh_GetIntSetting(L"Flyout.width"), 320, 1000);
-    flyoutHeight = std::clamp(Wh_GetIntSetting(L"Flyout.height"), 240, 900);
-    flyoutGraphHeight = std::clamp(Wh_GetIntSetting(L"Flyout.graphHeight"), 80, 400);
-    flyoutTopCount = std::clamp(Wh_GetIntSetting(L"Flyout.topCount"), 1, 10);
-    centerOffset = std::clamp(Wh_GetIntSetting(L"Layout.centerOffset"), -2000, 2000);
-    mainPosition = ReadPosition(L"Layout.mainPosition", false);
-    secondaryPosition = ReadPosition(L"Layout.secondaryPosition", true);
-    showCpu = Wh_GetIntSetting(L"Resources.showCpu") != 0;
-    showRam = Wh_GetIntSetting(L"Resources.showRam") != 0;
-    showGpu = Wh_GetIntSetting(L"Resources.showGpu") != 0;
-    showNetwork = Wh_GetIntSetting(L"Resources.showNetwork") != 0;
-    showResourceNames = Wh_GetIntSetting(L"Content.showResourceNames") != 0;
-    auto identifier = WindhawkUtils::StringSetting::make(L"Content.resourceIdentifier");
+    showPrimary = Wh_GetIntSetting(L"TaskbarPill.Monitors.showPrimary") != 0;
+    showSecondary = Wh_GetIntSetting(L"TaskbarPill.Monitors.showSecondary") != 0;
+    flyoutOnHover = Wh_GetIntSetting(L"Flyout.Behavior.openOnHover") != 0;
+    hoverDelay = std::clamp(Wh_GetIntSetting(L"Flyout.Behavior.hoverDelay"), 100, 3000);
+    hoverCloseDelay = std::clamp(Wh_GetIntSetting(L"Flyout.Behavior.hoverCloseDelay"), 100, 3000);
+    flyoutAnimations = Wh_GetIntSetting(L"Flyout.Behavior.animations") != 0;
+    flyoutGap = std::clamp(Wh_GetIntSetting(L"Flyout.Layout.gap"), 0, 40);
+    flyoutScreenMargin = std::clamp(Wh_GetIntSetting(L"Flyout.Layout.screenEdgeMargin"), 0, 100);
+    flyoutWidth = std::clamp(Wh_GetIntSetting(L"Flyout.Layout.width"), 320, 1000);
+    flyoutHeight = std::clamp(Wh_GetIntSetting(L"Flyout.Layout.height"), 240, 900);
+    flyoutGraphHeight = std::clamp(Wh_GetIntSetting(L"Flyout.Layout.graphHeight"), 80, 400);
+    flyoutTopCount = std::clamp(Wh_GetIntSetting(L"Flyout.Layout.topCount"), 1, 10);
+    centerOffset = std::clamp(Wh_GetIntSetting(L"TaskbarPill.Layout.centerOffset"), -2000, 2000);
+    mainPosition = ReadPosition(L"General.mainPosition", false);
+    secondaryPosition = ReadPosition(L"TaskbarPill.Monitors.secondaryPosition", true);
+    showCpu = Wh_GetIntSetting(L"General.Resources.showCpu") != 0;
+    showRam = Wh_GetIntSetting(L"General.Resources.showRam") != 0;
+    showGpu = Wh_GetIntSetting(L"General.Resources.showGpu") != 0;
+    showNetwork = Wh_GetIntSetting(L"General.Resources.showNetwork") != 0;
+    showResourceNames = Wh_GetIntSetting(L"TaskbarPill.Content.showResourceNames") != 0;
+    auto identifier = WindhawkUtils::StringSetting::make(L"TaskbarPill.Content.resourceIdentifier");
     resourceIdentifier = wcscmp(identifier.get(), L"name") == 0 ? ResourceIdentifier::Name :
                          wcscmp(identifier.get(), L"none") == 0 ? ResourceIdentifier::None : ResourceIdentifier::Icon;
-    auto value = WindhawkUtils::StringSetting::make(L"Content.graphStyle");
+    auto value = WindhawkUtils::StringSetting::make(L"TaskbarPill.Content.graphStyle");
     graphStyle = wcscmp(value.get(), L"boxed") == 0 ? GraphStyle::Boxed :
                  wcscmp(value.get(), L"background") == 0 ? GraphStyle::Background : GraphStyle::None;
-    auto layout = WindhawkUtils::StringSetting::make(L"Layout.layout");
+    auto layout = WindhawkUtils::StringSetting::make(L"TaskbarPill.Layout.layout");
     groupedLayout = wcscmp(layout.get(), L"grouped") == 0;
-    resourceMinWidth = std::clamp(Wh_GetIntSetting(L"Layout.Dimensions.resourceMinWidth"), 48, 400);
-    networkMinWidth = std::clamp(Wh_GetIntSetting(L"Layout.Dimensions.networkMinWidth"), 48, 400);
-    auto units = WindhawkUtils::StringSetting::make(L"Resources.networkSpeedUnits");
+    resourceMinWidth = std::clamp(Wh_GetIntSetting(L"TaskbarPill.Layout.Dimensions.resourceMinWidth"), 48, 400);
+    networkMinWidth = std::clamp(Wh_GetIntSetting(L"TaskbarPill.Layout.Dimensions.networkMinWidth"), 48, 400);
+    auto units = WindhawkUtils::StringSetting::make(L"General.Resources.networkSpeedUnits");
     networkBits = wcscmp(units.get(), L"bytes") != 0;
     AppearanceConfig a;
-    auto font = WindhawkUtils::StringSetting::make(L"Style.Typography.fontFamily");
+    auto font = WindhawkUtils::StringSetting::make(L"TaskbarPill.Typography.fontFamily");
     if (font.get()[0]) a.font = font.get();
     auto number = [](wchar_t const* key, int low, int high) {
         return double(std::clamp(Wh_GetIntSetting(key), low, high));
     };
-    auto backgroundStyle = WindhawkUtils::StringSetting::make(L"Style.Background.style");
+    auto backgroundStyle = WindhawkUtils::StringSetting::make(L"TaskbarPill.Appearance.Background.style");
     a.solidBackground = wcscmp(backgroundStyle.get(), L"transparent") != 0;
-    a.backgroundOpacity = number(L"Style.Background.opacity", 0, 100) / 100.0;
-    a.height = number(L"Style.Shape.height", 0, 100);
-    a.radius = number(L"Style.Shape.cornerRadius", 0, 100);
-    a.border = Wh_GetIntSetting(L"Style.Shape.borderEnabled") ? number(L"Style.Shape.borderThickness", 0, 4) : 0;
-    a.borderOpacity = number(L"Style.Shape.borderOpacity", 0, 100) / 100.0;
-    a.valueSize = number(L"Style.Typography.valueSize", 6, 48);
-    a.valueWeight = int(number(L"Style.Typography.valueWeight", 100, 900));
-    a.nameSize = number(L"Style.Typography.nameSize", 6, 48);
-    a.identifierSize = number(L"Style.Typography.identifierSize", 6, 48);
-    a.iconSize = number(L"Style.Icons.iconSize", 8, 48);
-    a.graphWidth = number(L"Style.Graphs.width", 16, 240);
-    a.graphHeight = number(L"Style.Graphs.height", 4, 100);
-    a.graphGap = number(L"Layout.Spacing.graphGap", 0, 64);
-    a.stroke = ReadNumber(L"Style.Graphs.lineThickness", 1.25, 0.5, 4);
-    a.fillAlpha = BYTE(std::lround(number(L"Style.Graphs.fillOpacity", 0, 100) * 255 / 100));
-    a.padding = ReadThickness(L"Layout.Spacing.padding", a.padding, 0, 64);
-    a.margin = ReadThickness(L"Layout.Spacing.margin", a.margin, -100, 100);
-    a.identifierGap = number(L"Layout.Spacing.identifierGap", 0, 64);
-    a.pillSpacing = number(L"Layout.Spacing.pillSpacing", 0, 64);
-    a.backgroundLineAlpha = BYTE(std::lround(number(L"Style.Graphs.backgroundLineOpacity", 0, 100) * 255 / 100));
+    a.backgroundOpacity = number(L"TaskbarPill.Appearance.Background.opacity", 0, 100) / 100.0;
+    a.height = number(L"TaskbarPill.Appearance.Shape.height", 0, 100);
+    a.radius = number(L"TaskbarPill.Appearance.Shape.cornerRadius", 0, 100);
+    a.border = Wh_GetIntSetting(L"TaskbarPill.Appearance.Shape.borderEnabled") ? number(L"TaskbarPill.Appearance.Shape.borderThickness", 0, 4) : 0;
+    a.borderOpacity = number(L"TaskbarPill.Appearance.Shape.borderOpacity", 0, 100) / 100.0;
+    a.valueSize = number(L"TaskbarPill.Typography.valueSize", 6, 48);
+    a.valueWeight = int(number(L"TaskbarPill.Typography.valueWeight", 100, 900));
+    a.nameSize = number(L"TaskbarPill.Typography.nameSize", 6, 48);
+    a.identifierSize = number(L"TaskbarPill.Typography.identifierSize", 6, 48);
+    a.iconSize = number(L"TaskbarPill.Icons.iconSize", 8, 48);
+    a.graphWidth = number(L"TaskbarPill.Graphs.width", 16, 240);
+    a.graphHeight = number(L"TaskbarPill.Graphs.height", 4, 100);
+    a.graphGap = number(L"TaskbarPill.Layout.Spacing.graphGap", 0, 64);
+    a.stroke = ReadNumber(L"TaskbarPill.Graphs.lineThickness", 1.25, 0.5, 4);
+    a.fillAlpha = BYTE(std::lround(number(L"TaskbarPill.Graphs.fillOpacity", 0, 100) * 255 / 100));
+    a.padding = ReadThickness(L"TaskbarPill.Layout.Spacing.padding", a.padding, 0, 64);
+    a.margin = ReadThickness(L"TaskbarPill.Layout.Spacing.margin", a.margin, -100, 100);
+    a.identifierGap = number(L"TaskbarPill.Layout.Spacing.identifierGap", 0, 64);
+    a.pillSpacing = number(L"TaskbarPill.Layout.Spacing.pillSpacing", 0, 64);
+    a.backgroundLineAlpha = BYTE(std::lround(number(L"TaskbarPill.Graphs.backgroundLineOpacity", 0, 100) * 255 / 100));
     ApplyTheme(a);
     AcquireSRWLockExclusive(&appearanceLock);
     a.revision = appearanceConfig.revision + 1;
