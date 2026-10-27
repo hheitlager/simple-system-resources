@@ -8,7 +8,7 @@ Simple System Resources adds compact CPU, Memory, GPU and network readings to th
 
 - **CPU, Memory and GPU readings** with live taskbar graphs and detailed flyouts.
 - **Upload and Download speeds** shown side by side. Both network pills open the same Network flyout.
-- **Individual or grouped pills**, with controls for which resources appear and where they sit on the taskbar.
+- **Individual or grouped pills**, with controls for which resources appear and where they sit on the taskbar. Drag the resource list in settings to choose the pill order; Upload and Download stay together.
 - **Themes and appearance options**, including icon or name identifiers, optional resource names, graph styles, sizing and spacing.
 - **Primary and secondary taskbar support**, with independently selectable placement for secondary taskbars.
 - **Click to open**, or optionally open a flyout after hovering over a pill.
@@ -28,6 +28,8 @@ Simple System Resources adds compact CPU, Memory, GPU and network readings to th
 
 ### Taskbar pill layouts
 
+The descriptions below use `<br>` to put the copy on two lines. The table columns are left-aligned, so each screenshot starts at the left edge of its cell.
+
 | Layout | Preview |
 |:---|:---|
 | **Individual pills · Background graph**<br>Each resource has its own pill, with activity shown behind the value. | ![Individual pills with background graphs](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) |
@@ -45,7 +47,7 @@ Simple System Resources adds compact CPU, Memory, GPU and network readings to th
 ## Settings at a glance
 
 - **General:** Resources, network speed units, theme, automatic light/dark theme and main taskbar placement.
-- **Taskbar pill:** Monitor visibility, secondary taskbar placement, layout, content, appearance, typography, icons and graphs.
+- **Taskbar pill:** Monitor visibility, secondary taskbar placement, layout and resource order, content, appearance, typography, icons and graphs.
 - **Flyout:** Hover behavior, animation, spacing from the taskbar and screen edge, size, graph height and top process count.
 - **Theme color overrides:** Optional shared background, text, accent and muted colors for pills and flyouts.
 

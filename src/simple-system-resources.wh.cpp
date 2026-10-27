@@ -37,20 +37,24 @@ without opening Task Manager first.
 
 ## Screenshots
 
-| CPU Flyout | RAM Flyout |
-|:---:|:---:|
-| ![CPU Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-CPU-Flyout.png) | ![RAM Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-RAM-Flyout.png) |
+### Resource flyouts
 
-| GPU Flyout | Ethernet Flyout |
+| CPU | Memory |
 |:---:|:---:|
-| ![GPU Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-GPU-Flyout.png) | ![LAN Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-LAN-Flyout.png) |
+| ![CPU flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-CPU-Flyout.png) | ![Memory flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-RAM-Flyout.png) |
 
-| Pill Type | Preview |
+| GPU | Network |
 |:---:|:---:|
-| Individual Pills - Background Graph | ![PillsBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) |
-| Grouped Pill - Background Graph | ![GroupedPillBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BackgroundGraph.png) |
-| Individual Pills - Boxed Graph | ![PillsBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) |
-| Grouped Pill - Boxed Graph  | ![GroupedPillBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BoxedGraph.png) |
+| ![GPU flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-GPU-Flyout.png) | ![Network flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-LAN-Flyout.png) |
+
+### Taskbar pill layouts
+
+| Layout | Preview |
+|:---|:---|
+| **Individual pills · Background graph**<br>Each resource has its own pill, with activity shown behind the value. | ![Individual pills with background graphs](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) |
+| **Grouped pill · Background graph**<br>Resources share one pill, with a background graph for each reading. | ![Grouped pill with background graphs](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BackgroundGraph.png) |
+| **Individual pills · Boxed graph**<br>Each resource has its own pill and a separate, compact graph. | ![Individual pills with boxed graphs](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) |
+| **Grouped pill · Boxed graph**<br>Resources share one pill, with compact graphs beside their readings. | ![Grouped pill with boxed graphs](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BoxedGraph.png) |
 
 ## Getting Started
 **1. Choose your resources**
