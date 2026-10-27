@@ -49,9 +49,9 @@ without opening Task Manager first.
 |:---:|:---:|
 | ![PillsBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) | ![GroupedPillBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BackgroundGraph.png) |
 
-| Individual Pills - Background Graph | Grouped Pill - Boxed Graph  |
+| Individual Pills - Boxed Graph | Grouped Pill - Boxed Graph  |
 |:---:|:---:|
-| ![PillsBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) | ![GroupedPillBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) |
+| ![PillsBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) | ![GroupedPillBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) |
 
 ## Getting Started
 **1. Choose your resources**
