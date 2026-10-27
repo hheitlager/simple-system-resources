@@ -36,7 +36,22 @@ without opening Task Manager first.
   opening is off by default. Each flyout includes a link to Task Manager.
 
 ## Screenshots
-![CPU flyout with the resource pills in the Windows taskbar](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-CPU-Flyout.png)
+
+| CPU Flyout | RAM Flyout |
+|:---:|:---:|
+| ![CPU Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-CPU-Flyout.png) | ![RAM Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-RAM-Flyout.png) |
+
+| GPU Flyout | Ethernet Flyout |
+|:---:|:---:|
+| ![GPU Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-GPU-Flyout.png) | ![LAN Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-LAN-Flyout.png) |
+
+| Individual Pills - Background Graph | Grouped Pill - Background Graph  |
+|:---:|:---:|
+| ![PillsBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) | ![GroupedPillBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BackgroundGraph.png) |
+
+| Individual Pills - Background Graph | Grouped Pill - Boxed Graph  |
+|:---:|:---:|
+| ![PillsBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) | ![GroupedPillBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) |
 
 ## Getting Started
 **1. Choose your resources**
