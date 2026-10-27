@@ -45,13 +45,12 @@ without opening Task Manager first.
 |:---:|:---:|
 | ![GPU Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-GPU-Flyout.png) | ![LAN Flyout](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-LAN-Flyout.png) |
 
-| Individual Pills - Background Graph | Grouped Pill - Background Graph  |
+| Pill Type | Preview |
 |:---:|:---:|
-| ![PillsBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) | ![GroupedPillBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BackgroundGraph.png) |
-
-| Individual Pills - Boxed Graph | Grouped Pill - Boxed Graph  |
-|:---:|:---:|
-| ![PillsBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) | ![GroupedPillBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) |
+| Individual Pills - Background Graph | ![PillsBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BackgroundGraph.png) |
+| Grouped Pill - Background Graph | ![GroupedPillBackground](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BackgroundGraph.png) |
+| Individual Pills - Boxed Graph | ![PillsBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarPills-BoxedGraph.png) |
+| Grouped Pill - Boxed Graph  | ![GroupedPillBoxed](https://raw.githubusercontent.com/hheitlager/simple-system-resources/main/screenshots/Simple-System-Resources-TaskbarGrouped-BoxedGraph.png) |
 
 ## Getting Started
 **1. Choose your resources**
